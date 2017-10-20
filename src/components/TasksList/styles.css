@@ -1,0 +1,30 @@
+.tasks-list {
+  background-color: #582972;
+  padding-top: 30px;
+  padding-bottom: 25px;
+
+  /*.tasks-list-subwrapper {
+    width: 900px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }*/
+
+  .tasks-title {
+    font-family: HelveticaNeue;
+    font-size: 30px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+
+  .tasks-more-line {
+    font-family: HelveticaNeue;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+
+    span {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.task-item {
+  width: 432.5px;
+  display: inline-block;
+  background-color: white;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 13px;
+  border-radius: 5px;
+
+  .map-view {
+    float: left;
+    background-color: red;
+    display: inline-block;
+    border-radius: 5px;
+
+    .imageT {
+      border-radius: 5px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .task-content {
+    float: left;
+    display: inline-block;
+    padding: 0 10px;
+
+    .task-title {
+      font-family: HelveticaNeue;
+      font-size: 15px;
+      color: #000000;
+      line-height: 22px;
+    }
+
+    .task-time {
+      font-family: HelveticaNeue;
+      font-size: 15px;
+      color: #999999;
+      line-height: 20px;
+    }
+
+    .task-price {
+      font-family: HelveticaNeue;
+      font-size: 15px;
+      color: #FF0055;
+    }
+  }
+
+  &:nth-child(2n+1) {
+    margin-right: 15px;
+  }
+}
