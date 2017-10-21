@@ -1,0 +1,26 @@
+.add-news-button {
+  width: 255px;
+  background: #ED008C;
+  border-radius: 30px;
+  font-family: HelveticaNeue;
+  font-size: 17px;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  padding: 15px 25px;
+  cursor: pointer;
+
+  i {
+    font-size: 25px;
+    float: left;
+  }
+
+  span {
+    float: left;
+    padding-top: 0px;
+    margin-left: 15px;
+  }
+}

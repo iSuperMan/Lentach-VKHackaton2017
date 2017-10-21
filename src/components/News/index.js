@@ -20,9 +20,9 @@ const News = ({ data: {
       </div>
     </div>
 
-    <div className="news-payment-sum">
+    {/* <div className="news-payment-sum">
       5 000 ₽
-    </div>
+    </div> */}
   </div>
 
   <div className="news-description">
