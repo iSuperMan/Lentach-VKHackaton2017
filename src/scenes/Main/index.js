@@ -4,14 +4,19 @@ import TaskList from 'containers/TasksList';
 import NewsList from 'containers/NewsList';
 import AddNewsButton from 'containers/AddNewsButton';
 import AddNewsForm from 'containers/AddNewsForm';
+import PublishModal from 'components/PublishModal';
 import Modal from 'containers/Modal';
 
 const Home = () => <div>
   <TaskList />
   <NewsList />
   <AddNewsButton />
-  <Modal modalId="addNews">
+  <Modal modalId="addNews" closeIcon>
     <AddNewsForm />
+  </Modal>
+
+  <Modal modalId="publishNews">
+    <PublishModal />
   </Modal>
 </div>;
 

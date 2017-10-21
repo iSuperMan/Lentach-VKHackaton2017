@@ -11,7 +11,7 @@ const Modal = (props) => <div
     className="i-modal-content"
     onClick={props.onModalClick}
   >
-    <span className="i-modal-close" onClick={props.onCloseclick}>&times;</span>
+    {props.closeIcon && <span className="i-modal-close" onClick={props.onCloseclick}>&times;</span>}
     <div className="i-modal-main-content">
       {props.children}
     </div>
