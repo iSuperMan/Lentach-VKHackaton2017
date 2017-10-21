@@ -1,5 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import './styles.css';
+
+moment.lang('ru');
 
 const Task = ({ data: {
   title,
@@ -12,7 +15,7 @@ const Task = ({ data: {
 
   <div className="task-content">
     <div className="task-title">{title}</div>
-    <div className="task-time">{datetime}</div>
+    <div className="task-time">{moment(datetime).fromNow()}</div>
     <div className="task-price">5 000 ₽</div>
   </div>
 </div>;

@@ -1,5 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import './styles.css';
+
+moment.lang('ru')
 
 const News = ({ data: {
   description,
@@ -13,7 +16,7 @@ const News = ({ data: {
         Алина Лонова
       </div>
       <div className="news-header-datetime">
-        {date}
+        {moment(date).fromNow()}
       </div>
     </div>
 

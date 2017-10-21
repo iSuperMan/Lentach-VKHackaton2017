@@ -60,6 +60,7 @@
     "eslint-plugin-react": "^6.9.0",
     "history": "^4.7.2",
     "keymirror": "^0.1.1",
+    "moment": "^2.19.1",
     "normalizr": "^3.2.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
