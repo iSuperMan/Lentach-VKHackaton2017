@@ -6,17 +6,20 @@ import TaskList from 'containers/TasksList';
 import NewsList from 'containers/NewsList';
 import AddNewsButton from 'containers/AddNewsButton';
 import { auth as authAPI } from 'api';
+import { getIsLogin } from 'reducers/auth';
 
 class Main extends PureComponent {
   componentDidMount() {
     const { code } = querystring.parse(this.props.location.search);
 
-    if (code) {
+    if (code && !this.props.isLogin) {
       this.props.postAuth({
         code,
         redirect_uri: 'http://local.lentach.com',
-      }).then(resp => {
-        console.log(resp);
+      }).then(({ payload: { response }}) => {
+        console.log(response);
+        localStorage.setItem('token', response.accessToken);
+        localStorage.setItem('userid', response.id);
       });
     }
   }
@@ -31,6 +34,9 @@ class Main extends PureComponent {
 }
 
 export default connect(
-  null,
-  { postAuth: authAPI.actions.postAuth },
+  state => ({ isLogin: getIsLogin(state) }),
+
+  {
+    postAuth: authAPI.actions.postAuth,
+  },
 )(Main);

@@ -13,7 +13,7 @@ const Modal = (props) => <div
   >
     {props.closeIcon && <span className="i-modal-close" onClick={props.onCloseclick}>&times;</span>}
     <div className="i-modal-main-content">
-      {props.children}
+      {React.cloneElement(props.children, { isOpen: props.isOpen })}
     </div>
   </div>
 </div>;

@@ -1,9 +1,13 @@
 import React, { PureComponent } from 'react';
 import $ from 'jquery';
 import { connect } from 'react-redux';
-import { actions } from 'containers/Modal';
+import { actions as modalActions } from 'containers/Modal';
 import { files as filesAPI } from 'api';
 import './styles.css';
+import * as actions from './actions';
+import reducers, { getForm } from './reducers';
+
+export { actions, reducers };
 
 class AddNewsForm extends PureComponent {
   constructor(props) {
@@ -13,10 +17,12 @@ class AddNewsForm extends PureComponent {
 
     this.state = {
       files: [],
+      description: '',
     }
   }
 
   onSubmit() {
+    this.props.saveAddForm(this.state);
     this.props.closeModal('addNews');
     this.props.openModal('publishNews');
   }
@@ -26,6 +32,15 @@ class AddNewsForm extends PureComponent {
       .then(({ payload: { result: { files }}}) => {
         this.setState({ files: [ ...this.state.files, files.file[0].name ]})
       })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.isOpen && this.props.isOpen) {
+      this.setState({
+        files: [],
+        description: '',
+      });
+    }
   }
 
   render() {
@@ -47,6 +62,7 @@ class AddNewsForm extends PureComponent {
           rows="3"
           name="text"
           placeholder="Добавьте описание…"
+          value={this.state.description}
           onChange={(text) => this.setState({ description: text.target.value })}
         />
       </div>
@@ -59,11 +75,13 @@ class AddNewsForm extends PureComponent {
 }
 
 export default connect(
-  null,
+  state => ({ form: getForm(state) }),
 
   {
-    openModal: actions.openModal,
-    closeModal: actions.closeModal,
+    openModal: modalActions.openModal,
+    closeModal: modalActions.closeModal,
     postFile: filesAPI.actions.postFile,
+    saveAddForm: actions.saveAddForm,
+    // resetAddForm: actions.resetAddForm,
   },
 )(AddNewsForm);

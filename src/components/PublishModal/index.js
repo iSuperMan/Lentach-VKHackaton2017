@@ -2,7 +2,7 @@ import React from 'react';
 import moneyIcon from './money-icon.png';
 import './styles.css';
 
-const AddNewsForm = ({ onVkButtonClick }) => <div className="publish-modal">
+const AddNewsForm = ({ onVkButtonClick, onAnonymButtonClick }) => <div className="publish-modal">
   <div className="publish-modal-img">
     <img src={moneyIcon}/>
   </div>
@@ -16,11 +16,11 @@ const AddNewsForm = ({ onVkButtonClick }) => <div className="publish-modal">
   </div>
 
   <div className="publish-modal-vk-button">
-    <button onClick={onVkButtonClick}>Войти через VK</button>
+    <button onClick={onVkButtonClick}>Опубликовать через VK</button>
   </div>
 
   <div className="publish-modal-anonym-button">
-    <button>Опубликовать анонимно</button>
+    <button onClick={onAnonymButtonClick}>Опубликовать анонимно</button>
   </div>
 </div>;
 

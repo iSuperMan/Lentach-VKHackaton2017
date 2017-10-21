@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import AddNewsForm from 'containers/AddNewsForm';
 import PublishModal from 'containers/PublishModal';
 import Modal from 'containers/Modal';
+import { connect } from 'react-redux';
+import { auth as authAPI } from 'api';
 import Main from './scenes/Main';
 
 class App extends PureComponent {
@@ -19,9 +21,24 @@ class App extends PureComponent {
     VK.init({
       apiId: 6228781
     });
+
+    const userid = localStorage.getItem('userid');
+    const token = localStorage.getItem('token');
+
+    if (userid && token) {
+      this.props.getUser(userid, token)
+        .then(resp => {
+          this.setState({ isInit: true });
+        });
+    } else {
+      this.setState({ isInit: true });
+    }
   }
 
   render() {
+    if (!this.state.isInit)
+      return null;
+
     return <Layout>
       <Switch>
         <Route path="/" component={Main} />
@@ -38,4 +55,7 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+export default connect(
+  null,
+  { getUser: authAPI.actions.getUser },
+)(App);
