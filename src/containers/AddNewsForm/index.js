@@ -30,7 +30,15 @@ class AddNewsForm extends PureComponent {
   inputChangeHandler(event) {
     this.props.postFile(event.target.files[0])
       .then(({ payload: { result: { files }}}) => {
-        this.setState({ files: [ ...this.state.files, files.file[0].name ]})
+        // console.log(files);
+        const id = files.file[0].name;
+        let type = files.file[0].type.split('/')[0];
+
+        if (type === 'image') {
+          type = 'img';
+        }
+
+        this.setState({ files: [ ...this.state.files, { id, type } ]})
       })
   }
 

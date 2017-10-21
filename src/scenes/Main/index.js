@@ -6,6 +6,7 @@ import TaskList from 'containers/TasksList';
 import NewsList from 'containers/NewsList';
 import AddNewsButton from 'containers/AddNewsButton';
 import { auth as authAPI } from 'api';
+import { news as newsAPI } from 'api';
 import { getIsLogin } from 'reducers/auth';
 
 class Main extends PureComponent {
@@ -20,6 +21,21 @@ class Main extends PureComponent {
         console.log(response);
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('userid', response.id);
+
+        const newsdata = localStorage.getItem('newsdata');
+        if (newsdata) {
+          localStorage.removeItem('newsdata')
+          const formData = JSON.parse(newsdata);
+
+          this.props.postNews({
+            description: formData.description,
+            mediaIds: formData.files,
+            datetime: new Date(),
+            userId: response.id,
+          }).then(resp => {
+            console.log(resp);
+          })
+        }
       });
     }
   }
@@ -38,5 +54,6 @@ export default connect(
 
   {
     postAuth: authAPI.actions.postAuth,
+    postNews: newsAPI.actions.postNews ,
   },
 )(Main);
