@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-const AddNewsButton = () => <div className="add-news-button">
+const AddNewsButton = ({ onClick }) => <div className="add-news-button" onClick={onClick}>
   <i className="fa fa-plus" aria-hidden="true"></i>
   <span>
     Добавить материал
