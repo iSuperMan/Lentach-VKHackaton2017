@@ -4,6 +4,7 @@ import querystring from 'query-string';
 import { connect } from 'react-redux';
 import TaskList from 'containers/TasksList';
 import NewsList from 'containers/NewsList';
+import { actions as modalActions } from 'containers/Modal';
 import AddNewsButton from 'containers/AddNewsButton';
 import { auth as authAPI } from 'api';
 import { news as newsAPI } from 'api';
@@ -34,6 +35,7 @@ class Main extends PureComponent {
             userId: response.id,
           }).then(resp => {
             console.log(resp);
+            this.props.openModal('successModal');
           })
         }
       });
@@ -54,6 +56,7 @@ export default connect(
 
   {
     postAuth: authAPI.actions.postAuth,
-    postNews: newsAPI.actions.postNews ,
+    postNews: newsAPI.actions.postNews,
+    openModal: modalActions.openModal,
   },
 )(Main);

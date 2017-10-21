@@ -2,6 +2,7 @@ import PublishModal from 'components/PublishModal';
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { getForm } from 'containers/AddNewsForm/reducers'
+import { actions as modalActions } from 'containers/Modal';
 import querystring from 'query-string'
 import { news as newsAPI } from 'api';
 import { getIsLogin, getUser } from 'reducers/auth';
@@ -9,11 +10,15 @@ import { getIsLogin, getUser } from 'reducers/auth';
 export default compose(
   connect(
     state => ({ formData: getForm(state), isLogin: getIsLogin(state), user: getUser(state) }),
-    { postNews: newsAPI.actions.postNews },
+    {
+      postNews: newsAPI.actions.postNews,
+      openModal: modalActions.openModal,
+      closeModal: modalActions.closeModal,
+    },
   ),
 
   withHandlers({
-    onVkButtonClick: ({ postNews, postAuth, formData, isLogin, user }) => () => {
+    onVkButtonClick: ({ postNews, postAuth, formData, isLogin, user, closeModal, openModal }) => () => {
       if (isLogin) {
         console.log('isLogin request');
         postNews({
@@ -23,6 +28,9 @@ export default compose(
           userId: user.id,
         }).then(resp => {
           console.log(resp);
+          closeModal('publishNews');
+          openModal('successModal');
+
           localStorage.removeItem('token')
           localStorage.removeItem('userid')
         });
@@ -39,13 +47,15 @@ export default compose(
       }
     },
 
-    onAnonymButtonClick: ({ postNews, formData }) => () => {
+    onAnonymButtonClick: ({ postNews, formData, closeModal, openModal }) => () => {
       postNews({
         description: formData.description,
         mediaIds: formData.files,
         datetime: new Date(),
       }).then(resp => {
         console.log(resp);
+        closeModal('publishNews');
+        openModal('successModal');
       });
     },
   }),

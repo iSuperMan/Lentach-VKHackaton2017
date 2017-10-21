@@ -1,0 +1,11 @@
+.success-modal {
+  .success-modal-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-family: HelveticaNeue;
+    font-size: 30px;
+    color: #2F2633;
+    margin-bottom: 20px;
+  }
+}
