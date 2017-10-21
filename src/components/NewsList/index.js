@@ -2,13 +2,9 @@ import React from 'react';
 import News from 'components/News';
 import './styles.css';
 
-const NewsList = () => <div className="news-list">
+const NewsList = ({ news }) => <div className="news-list">
   <div className="section-1">
-    <News />
-    <News />
-    <News />
-    <News />
-    <News />
+    {news.map(news => <News key={news.id} data={news} />)}
   </div>
 </div>;
 

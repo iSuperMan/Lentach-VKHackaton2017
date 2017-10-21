@@ -1,7 +1,10 @@
 import React from 'react';
 import './styles.css';
 
-const News = () => <div className="news-item">
+const News = ({ data: {
+  description,
+  date,
+}}) => <div className="news-item">
   <div className="news-header">
     <div className="news-user-avatar"></div>
 
@@ -10,7 +13,7 @@ const News = () => <div className="news-item">
         Алина Лонова
       </div>
       <div className="news-header-datetime">
-        15:30
+        {date}
       </div>
     </div>
 
@@ -20,7 +23,7 @@ const News = () => <div className="news-item">
   </div>
 
   <div className="news-description">
-    На красной площади во время проведения фестиваля загорелся ларек
+    {description}
   </div>
 
   <div className="news-photo-wrapper">
@@ -34,24 +37,27 @@ const News = () => <div className="news-item">
   </div>
 
   <div className="news-bottom">
-    <div className="news-bottom-result">50%</div>
+    {/* <div>
+      <div className="news-bottom-result">50%</div>
+
+      <div>
+        <div className="news-bottom-result-part active">
+          Правда
+        </div>
+        <div className="news-bottom-result-part">
+          Ложь
+        </div>
+      </div>
+    </div> */}
 
     <div>
-      <div className="news-bottom-result-part active">
-        Правда
-      </div>
-      <div className="news-bottom-result-part">
-        Ложь
-      </div>
-    </div>
-
-
-    {/* <div className="news-bottom-vote-part">
+      <div className="news-bottom-vote-part">
         👍🏻 Правда
-    </div>
-    <div className="news-bottom-vote-part">
+      </div>
+      <div className="news-bottom-vote-part">
         👎🏻 Ложь
-    </div> */}
+      </div>
+    </div>
   </div>
 </div>;
 
