@@ -6,7 +6,8 @@ moment.lang('ru')
 
 const News = ({ data: {
   description,
-  date,
+  datetime,
+  mediaIds,
 }}) => <div className="news-item">
   <div className="news-header">
     <div className="news-user-avatar"></div>
@@ -16,7 +17,7 @@ const News = ({ data: {
         Алина Лонова
       </div>
       <div className="news-header-datetime">
-        {moment(date).fromNow()}
+        {moment(datetime).fromNow()}
       </div>
     </div>
 
@@ -33,10 +34,10 @@ const News = ({ data: {
     <div className="news-photo">
     </div>
 
-    <div className="news-photo-counter">
-      <div className="news-photo-counter-value">13</div>
+    {mediaIds.length > 1 ? <div className="news-photo-counter">
+      <div className="news-photo-counter-value">{mediaIds.length}</div>
       <div className="news-photo-counter-text">фото</div>
-    </div>
+    </div> : null}
   </div>
 
   <div className="news-bottom">
