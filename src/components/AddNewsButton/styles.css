@@ -13,6 +13,10 @@
   padding: 15px 25px;
   cursor: pointer;
 
+  &:active {
+    background: #da0282;
+  }
+
   i {
     font-size: 25px;
     float: left;

@@ -1,0 +1,80 @@
+.publish-modal {
+
+  .publish-modal-img {
+    width: 100%;
+    margin-top: 14px;
+
+    img {
+      height: 192px;
+      width: 192px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  .publish-modal-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-family: HelveticaNeue;
+    font-size: 34px;
+    color: #2F2633;
+  }
+
+  .publish-modal-description {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 16px;
+    font-family: HelveticaNeue;
+    font-size: 15px;
+    color: #979199;
+    text-align: center;
+  }
+
+  .publish-modal-vk-button {
+    margin-top: 20px;
+
+    button {
+      background: #ED008C;
+      border-radius: 100px;
+      font-family: Monaco;
+      font-size: 17px;
+      color: #FFFFFF;
+      text-align: center;
+      width: 90%;
+      display: block;
+      margin: 0 auto;
+      padding: 10px 0;
+      border: none;
+      outline: none;
+
+      &:active {
+        background: #da0282;
+      }
+    }
+  }
+
+  .publish-modal-anonym-button {
+    margin-top: 19px;
+    width: 100%;
+    text-align: center;
+
+    button {
+      border: none;
+      outline: none;
+      font-family: HelveticaNeue;
+      font-size: 15px;
+      color: #582972;
+      background: transparent;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 1;
+        color: #401856;
+      }
+    }
+  }
+}
