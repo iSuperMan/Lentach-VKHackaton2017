@@ -25,6 +25,12 @@
 
     span {
       cursor: pointer;
+      position: relative;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: .8;
+      }
     }
   }
 }
