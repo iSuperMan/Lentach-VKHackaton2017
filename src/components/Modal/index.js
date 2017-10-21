@@ -21,18 +21,15 @@ const Modal = (props) => <div
 export default withHandlers({
   onOutsideclick: ({ closeModal }) => (event) => {
     event.stopPropagation();
-    event.preventDefault();
     closeModal();
   },
 
   onCloseclick: ({ closeModal }) => (event) => {
     event.stopPropagation();
-    event.preventDefault();
     closeModal();
   },
 
   onModalClick: () => (event) => {
     event.stopPropagation();
-    event.preventDefault();
   },
 })(Modal);

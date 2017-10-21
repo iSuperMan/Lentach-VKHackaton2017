@@ -4,11 +4,11 @@ import { CALL_API, getJSON } from 'redux-api-middleware';
 import types from 'api/auth/types';
 import endpoints from 'api/endpoints';
 
-export default token => ({
+export default data => ({
   [CALL_API]: {
     endpoint: endpoints.AUTH_API,
     method: 'POST',
-    body: JSON.stringify({ data: token }),
+    body: JSON.stringify(data),
 
     headers: {
       Accept: 'application/json',

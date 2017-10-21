@@ -12,7 +12,10 @@ class Main extends PureComponent {
     const { code } = querystring.parse(this.props.location.search);
 
     if (code) {
-      this.props.postAuth(code).then(resp => {
+      this.props.postAuth({
+        code,
+        redirect_uri: 'http://local.lentach.com',
+      }).then(resp => {
         console.log(resp);
       });
     }
