@@ -5,7 +5,7 @@ import { actions as modalActions } from 'containers/Modal';
 import { files as filesAPI } from 'api';
 import './styles.css';
 import * as actions from './actions';
-import reducers, { getForm } from './reducers';
+import reducers, { getForm, getTask } from './reducers';
 
 export { actions, reducers };
 
@@ -22,7 +22,8 @@ class AddNewsForm extends PureComponent {
   }
 
   onSubmit() {
-    this.props.saveAddForm(this.state);
+    const taskId = this.props.task ? this.props.task.id : null;
+    this.props.saveAddForm({ ...this.state, taskId });
     this.props.closeModal('addNews');
     this.props.openModal('publishNews');
   }
@@ -44,6 +45,7 @@ class AddNewsForm extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.isOpen && this.props.isOpen) {
+      this.props.resetTaskAddForm();
       this.setState({
         files: [],
         description: '',
@@ -83,13 +85,14 @@ class AddNewsForm extends PureComponent {
 }
 
 export default connect(
-  state => ({ form: getForm(state) }),
+  state => ({ form: getForm(state), task: getTask(state) }),
 
   {
     openModal: modalActions.openModal,
     closeModal: modalActions.closeModal,
     postFile: filesAPI.actions.postFile,
     saveAddForm: actions.saveAddForm,
+    resetTaskAddForm: actions.resetTaskAddForm,
     // resetAddForm: actions.resetAddForm,
   },
 )(AddNewsForm);

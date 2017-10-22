@@ -12,27 +12,30 @@ export default compose(
     state => ({ formData: getForm(state), isLogin: getIsLogin(state), user: getUser(state) }),
     {
       postNews: newsAPI.actions.postNews,
+      getNews: newsAPI.actions.getNews,
       openModal: modalActions.openModal,
       closeModal: modalActions.closeModal,
     },
   ),
 
   withHandlers({
-    onVkButtonClick: ({ postNews, postAuth, formData, isLogin, user, closeModal, openModal }) => () => {
+    onVkButtonClick: ({ getNews, postNews, postAuth, formData, isLogin, user, closeModal, openModal }) => () => {
       if (isLogin) {
         console.log('isLogin request');
         postNews({
           description: formData.description,
           mediaIds: formData.files,
           datetime: new Date(),
+          taksId: formData.taskId,
           userId: user.id,
         }).then(resp => {
           console.log(resp);
           closeModal('publishNews');
           openModal('successModal');
 
-          localStorage.removeItem('token')
-          localStorage.removeItem('userid')
+          getNews();
+          // localStorage.removeItem('token')
+          // localStorage.removeItem('userid')
         });
       } else {
         const params = querystring.stringify({
@@ -47,15 +50,17 @@ export default compose(
       }
     },
 
-    onAnonymButtonClick: ({ postNews, formData, closeModal, openModal }) => () => {
+    onAnonymButtonClick: ({ getNews, postNews, formData, closeModal, openModal }) => () => {
       postNews({
         description: formData.description,
         mediaIds: formData.files,
+        taksId: formData.taskId,
         datetime: new Date(),
       }).then(resp => {
         console.log(resp);
         closeModal('publishNews');
         openModal('successModal');
+        getNews();
       });
     },
   }),

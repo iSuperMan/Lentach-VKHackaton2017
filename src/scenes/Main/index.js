@@ -19,9 +19,9 @@ class Main extends PureComponent {
         code,
         redirect_uri: 'http://local.lentach.com',
       }).then(({ payload: { response }}) => {
-        console.log(response);
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('userid', response.id);
+        this.props.getNews();
 
         const newsdata = localStorage.getItem('newsdata');
         if (newsdata) {
@@ -33,9 +33,10 @@ class Main extends PureComponent {
             mediaIds: formData.files,
             datetime: new Date(),
             userId: response.id,
+            taksId: formData.taskId,
           }).then(resp => {
-            console.log(resp);
             this.props.openModal('successModal');
+            this.props.getNews();
           })
         }
       });
@@ -57,6 +58,7 @@ export default connect(
   {
     postAuth: authAPI.actions.postAuth,
     postNews: newsAPI.actions.postNews,
+    getNews: newsAPI.actions.getNews,
     openModal: modalActions.openModal,
   },
 )(Main);

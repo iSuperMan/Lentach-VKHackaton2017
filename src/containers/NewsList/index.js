@@ -14,7 +14,11 @@ export default compose(
       news: getNews(state),
     }),
 
-    { getNews: newsAPI.actions.getNews },
+    {
+      getNews: newsAPI.actions.getNews,
+      putVoteDownNews: newsAPI.actions.putVoteDownNews,
+      putVoteUpNews: newsAPI.actions.putVoteUpNews,
+    },
   ),
 
   lifecycle({
