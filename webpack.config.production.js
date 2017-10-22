@@ -20,6 +20,40 @@ module.exports = {
           'babel-loader'
         ],
         exclude: /node_modules/
+      },
+
+      {
+				test: /\.css$/,
+				use: [
+					{
+						loader: 'style-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'css-loader',
+						// options: {
+						// 	modules: true,
+						// 	importLoaders: 1,
+						// 	localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+						// },
+					},
+					'postcss-loader',
+					'sass-loader',
+				],
+			},
+
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
