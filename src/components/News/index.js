@@ -5,7 +5,7 @@ import './styles.css';
 
 moment.lang('ru')
 
-const News = ({ onVoteUp, onVoteDown, data: {
+const News = ({ onVoteUp, onVoteDown, voteUp, voteDown, data: {
   description,
   datetime,
   mediaIds,
@@ -45,17 +45,25 @@ const News = ({ onVoteUp, onVoteDown, data: {
   </div>
 
   <div className="news-bottom">
-    {isVoted ? <div>
+    {isVoted || voteUp || voteDown ? <div>
       {/* <div className="news-bottom-result">50%</div> */}
 
-      <div>
+      {isVoted ? <div>
         <div className={`news-bottom-result-part${isLiked ? ' active' : ''}`}>
           👍🏻 {up}
         </div>
-        <div className={`news-bottom-result-part${isLiked ? '' : ' active'}`}>
+        <div className={`news-bottom-result-part${!isLiked ? ' active' : ''}`}>
           👎🏻 {down}
         </div>
-      </div>
+      </div> : <div>
+        <div className={`news-bottom-result-part${voteUp ? ' active' : ''}`}>
+          👍🏻 {up + (voteUp ? 1 : 0)}
+        </div>
+        <div className={`news-bottom-result-part${voteDown ? ' active' : ''}`}>
+          👎🏻 {down + (voteDown ? 1 : 0)}
+        </div>
+      </div>}
+
     </div> : <div>
       <div className="news-bottom-vote-part" onClick={onVoteUp}>
         👍🏻 Правда
