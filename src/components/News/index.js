@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import userIcon from './user.png';
 import './styles.css';
 
 moment.lang('ru')
@@ -13,11 +14,11 @@ const News = ({ onVoteUp, onVoteDown, data: {
   task,
 }}) => <div className="news-item">
   <div className="news-header">
-    <img className="news-user-avatar" src={user.imgSrc}/>
+    <img className="news-user-avatar" src={user ? user.imgSrc : userIcon}/>
 
     <div className="news-header-info">
       <div className="news-header-user-name">
-        {`${user.first_name} ${user.last_name}`}
+        {user ? `${user.first_name} ${user.last_name}` : 'Аноним'}
       </div>
       <div className="news-header-datetime">
         {moment(datetime).fromNow()}
@@ -34,7 +35,7 @@ const News = ({ onVoteUp, onVoteDown, data: {
   </div>
 
   <div className="news-photo-wrapper">
-    <div className="news-photo">
+    <div className="news-photo" style={{ backgroundImage: `url("/static/media/${mediaIds[0].id}")` }}>
     </div>
 
     {mediaIds.length > 1 ? <div className="news-photo-counter">

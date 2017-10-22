@@ -91,6 +91,8 @@
       background-color: #D8D8D8;
       border-radius: 4px;
       height: 186px;
+      background-position: 100%;
+      background-size: cover;
     }
   }
 

@@ -19,9 +19,11 @@ const TaskList = ({ tasks, openModal, attachTaskAddForm, showMore, setShowMore }
       />)}
     </div>
 
-    {!showMore ? <div className="tasks-more-line">
-      <span onClick={setShowMore}>Показать все</span>
-    </div> : null}
+    <div className="tasks-more-line">
+      {!showMore
+        ? <span onClick={() => setShowMore(true)}>Показать все</span>
+        : <span onClick={() => setShowMore(false)}>Скрыть</span>}
+    </div>
   </div>
 </div>;
 
