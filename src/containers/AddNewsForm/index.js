@@ -63,8 +63,20 @@ class AddNewsForm extends PureComponent {
         style={{ display: 'none' }}
       />
 
-      <div className="add-news-image-picker" onClick={() => $('#avatar-upload-input').click()}>
-        <i className="fa fa-plus" aria-hidden="true"></i>
+      <div className="images-wrapper">
+        {this.state.files.map(file => <div
+          key={file.id}
+          className="image-preview"
+          style={{ backgroundImage: `url("/static/media/${file.id}")` }}
+          ></div>)}
+
+          <div
+            className="add-news-image-picker"
+            onClick={() => $('#avatar-upload-input').click()}
+            style={this.state.files.length ? { display: 'inline-block' } : {}}
+          >
+            <i className="fa fa-plus" aria-hidden="true"></i>
+          </div>
       </div>
 
       <div className="add-news-description">

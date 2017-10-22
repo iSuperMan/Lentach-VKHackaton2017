@@ -1,6 +1,11 @@
 .add-news-form {
   width: 100%;
 
+  .images-wrapper {
+    margin-top: 40px;
+    width: 100%;
+  }
+
   .add-news-image-picker {
     /* Mask: */
     background: #FFFFFF;
@@ -12,12 +17,29 @@
     text-align: center;
     cursor: pointer;
     padding-top: 30px;
-    margin-top: 40px;
+    display: block;
+    position: relative;
 
     i {
       color: #ED008C;
+      position: absolute;
       font-size: 20px;
+      right: 0;
+      left: 0;
     }
+  }
+
+  .image-preview {
+    background: #FFFFFF;
+    box-shadow: 0 2px 30px 0 rgba(0,0,0,0.10);
+    border-radius: 6px;
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    /*float: left;*/
+    margin-right: 5px;
   }
 
   .add-news-description {
