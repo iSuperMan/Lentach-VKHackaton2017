@@ -41,6 +41,7 @@
     "copyfiles": "^1.2.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^1.1.5",
     "module-resolver": "^1.0.0",
     "node-sass": "^4.5.3",
@@ -77,6 +78,7 @@
     "redux-form": "^7.1.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "resolve-url-loader": "^2.1.1"
   }
 }

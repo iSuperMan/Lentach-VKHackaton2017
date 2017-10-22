@@ -17,7 +17,7 @@ class Main extends PureComponent {
     if (code && !this.props.isLogin) {
       this.props.postAuth({
         code,
-        redirect_uri: 'http://local.lentach.com',
+        redirect_uri: 'https://wavemeup.me',
       }).then(({ payload: { response }}) => {
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('userid', response.id);
@@ -34,7 +34,7 @@ class Main extends PureComponent {
               mediaIds: formData.files,
               datetime: new Date(),
               userId: response.id,
-              taksId: formData.taskId,
+              taskId: formData.taskId,
             }).then(resp => {
               this.props.openModal('successModal');
               this.props.getNews();

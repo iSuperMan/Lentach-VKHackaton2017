@@ -10,6 +10,7 @@ const News = ({ onVoteUp, onVoteDown, data: {
   mediaIds,
   rating: { isLiked, up, down, isVoted },
   user,
+  task,
 }}) => <div className="news-item">
   <div className="news-header">
     <img className="news-user-avatar" src={user.imgSrc}/>
@@ -23,9 +24,9 @@ const News = ({ onVoteUp, onVoteDown, data: {
       </div>
     </div>
 
-    {/* <div className="news-payment-sum">
-      5 000 ₽
-    </div> */}
+    {task ? <div className="news-payment-sum">
+      {task.sum} ₽
+    </div> : null}
   </div>
 
   <div className="news-description">

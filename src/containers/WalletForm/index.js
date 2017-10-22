@@ -30,7 +30,7 @@ class WalletForm extends PureComponent {
             mediaIds: formData.files,
             datetime: new Date(),
             userId: this.props.user.id,
-            taksId: formData.taskId,
+            taskId: formData.taskId,
           }).then(resp => {
             this.props.openModal('successModal');
             this.props.getNews();

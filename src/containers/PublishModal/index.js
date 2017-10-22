@@ -26,7 +26,7 @@ export default compose(
           description: formData.description,
           mediaIds: formData.files,
           datetime: new Date(),
-          taksId: formData.taskId,
+          taskId: formData.taskId,
           userId: user.id,
         }).then(resp => {
           console.log(resp);
@@ -40,7 +40,7 @@ export default compose(
       } else {
         const params = querystring.stringify({
           client_id: 6228781,
-          redirect_uri: 'http://local.lentach.com',
+          redirect_uri: 'https://wavemeup.me',
           response_type: 'code',
           v: '5.68',
         });
@@ -54,7 +54,7 @@ export default compose(
       postNews({
         description: formData.description,
         mediaIds: formData.files,
-        taksId: formData.taskId,
+        taskId: formData.taskId,
         datetime: new Date(),
       }).then(resp => {
         console.log(resp);

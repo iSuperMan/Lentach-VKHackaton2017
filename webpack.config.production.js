@@ -1,11 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
 
   output: {
-    filename: 'static/bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -24,24 +25,20 @@ module.exports = {
 
       {
 				test: /\.css$/,
-				use: [
-					{
-						loader: 'style-loader',
-						options: {
-							sourceMap: true,
+        use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						{
+							loader: 'css-loader',
+							options: {
+								localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+							},
 						},
-					},
-					{
-						loader: 'css-loader',
-						// options: {
-						// 	modules: true,
-						// 	importLoaders: 1,
-						// 	localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
-						// },
-					},
-					'postcss-loader',
-					'sass-loader',
-				],
+						'resolve-url-loader',
+						'postcss-loader',
+						'sass-loader',
+					],
+				}),
 			},
 
       {
@@ -59,9 +56,19 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      comments: false
-    })
-  ]
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: '"production"',
+			},
+			__DEVELOPMENT__: false,
+		}),
+		new ExtractTextPlugin({
+			filename: 'bundle.css',
+			allChunks: true,
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			sourceMap: true,
+			comments: false,
+		}),
+	],
 };
