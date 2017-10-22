@@ -3,7 +3,8 @@ body {
   background-color: #ECEFF1;
 
   .section-1 {
-    width: 900px;
+    max-width: 900px;
+    min-width: 350px;
     padding: 0 10px;
     margin: 0 auto;
   }
