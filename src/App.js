@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import AddNewsForm from 'containers/AddNewsForm';
 import PublishModal from 'containers/PublishModal';
 import SuccessModal from 'components/SuccessModal';
+import WalletForm from 'containers/WalletForm';
 import Modal from 'containers/Modal';
 import { connect } from 'react-redux';
 import { auth as authAPI } from 'api';
@@ -55,6 +56,10 @@ class App extends PureComponent {
 
       <Modal modalId="successModal">
         <SuccessModal />
+      </Modal>
+
+      <Modal modalId="walletModal" bigModal>
+        <WalletForm />
       </Modal>
     </Layout>;
   }

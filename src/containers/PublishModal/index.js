@@ -34,8 +34,8 @@ export default compose(
           openModal('successModal');
 
           getNews();
-          // localStorage.removeItem('token')
-          // localStorage.removeItem('userid')
+          localStorage.removeItem('token')
+          localStorage.removeItem('userid')
         });
       } else {
         const params = querystring.stringify({

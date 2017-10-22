@@ -1,0 +1,51 @@
+.wallet-form {
+
+  .wallet-form-header {
+    text-align: center;
+    font-family: Monaco;
+    font-size: 34px;
+    color: #2F2633;
+  }
+
+  .wallet-form-input {
+    margin-top: 83px;
+
+    input {
+      width: 250px;
+      margin: 0 auto;
+      display: block;
+      border: none;
+      outline: none;
+      font-family: Monaco;
+      font-size: 15px;
+      color: #999999;
+
+      &::placeholder {
+        color: #999999;
+      }
+    }
+  }
+
+  .wallet-form-submit {
+    margin-top: 200px;
+
+    button {
+      background: #ED008C;
+      border-radius: 100px;
+      font-family: Monaco;
+      font-size: 17px;
+      color: #FFFFFF;
+      text-align: center;
+      width: 90%;
+      display: block;
+      margin: 0 auto;
+      padding: 10px 0;
+      border: none;
+      outline: none;
+
+      &:active {
+        background: #da0282;
+      }
+    }
+  }
+}

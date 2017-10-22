@@ -11,6 +11,28 @@
     background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 
+.i-modal-big {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(255,255,255); /* Fallback color */
+    /*background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.i-modal-big-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 0 auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 600px;
+    top: 15%;
+}
+
 /* Modal Content/Box */
 .i-modal-content {
     position: relative;

@@ -23,21 +23,25 @@ class Main extends PureComponent {
         localStorage.setItem('userid', response.id);
         this.props.getNews();
 
-        const newsdata = localStorage.getItem('newsdata');
-        if (newsdata) {
-          localStorage.removeItem('newsdata')
-          const formData = JSON.parse(newsdata);
+        if (response.btc_wallet) {
+          const newsdata = localStorage.getItem('newsdata');
+          if (newsdata) {
+            localStorage.removeItem('newsdata')
+            const formData = JSON.parse(newsdata);
 
-          this.props.postNews({
-            description: formData.description,
-            mediaIds: formData.files,
-            datetime: new Date(),
-            userId: response.id,
-            taksId: formData.taskId,
-          }).then(resp => {
-            this.props.openModal('successModal');
-            this.props.getNews();
-          })
+            this.props.postNews({
+              description: formData.description,
+              mediaIds: formData.files,
+              datetime: new Date(),
+              userId: response.id,
+              taksId: formData.taskId,
+            }).then(resp => {
+              this.props.openModal('successModal');
+              this.props.getNews();
+            })
+          }
+        } else {
+          this.props.openModal('walletModal');
         }
       });
     }

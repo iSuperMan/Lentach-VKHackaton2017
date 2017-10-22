@@ -7,5 +7,6 @@ export default {
   NEWS_VOTEDOWN_API: `${host}/news/voteDown`,
   AUTH_API: `${host}/users/auth/code`,
   USERS_API: `${host}/users/:id`,
+  SET_WALLET_API: `${host}/users/setWallet`,
   FILES_API: `${host}/containers/media/upload`,
 };
